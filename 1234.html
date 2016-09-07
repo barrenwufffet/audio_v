@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1">
+  <title>1234</title>
+  <link rel="shortcut icon" href="images/1234.ico" />
+  <link type="text/css" rel="stylesheet" href="1234.css">
+</head>
+<body>
+  <div id="container">
+    <div id="button1" class="bg">
+      <button type="button" class="pad" id="one">1</button>
+      <div class="rate">
+        <p>Playback Rate</p>
+        <input type="range" min="50" value="100" max="150" onchange="setPlayBack(0,this.value)"/>
+      </div>
+      <select id="list-one" class="list" onchange="changeSound(0,this.value)"></select>
+    </div>
+    <div id="button2" class="bg">
+      <button type="button" class="pad" id="two">2</button>
+      <div class="rate">
+        <p>Playback Rate</p>
+        <input type="range" min="50" value="100" max="150" onchange="setPlayBack(1,this.value)"/>
+      </div>
+      <select id="list-two" class="list" onchange="changeSound(1,this.value)"></select>
+    </div>
+    <div id="button3" class="bg">
+      <button type="button" class="pad" id="three">3</button>
+      <div class="rate">
+        <p>Playback Rate</p>
+        <input type="range" min="50" value="100" max="150" onchange="setPlayBack(2,this.value)"/>
+      </div>
+      <select id="list-three" class="list" onchange="changeSound(2,this.value)"></select>
+    </div>
+    <div id="button4" class="bg">
+      <button type="button" class="pad" id="four">4</button>
+      <div class="rate">
+        <p>Playback Rate</p>
+        <input type="range" min="50" value="100" max="150" onchange="setPlayBack(3,this.value)"/>
+      </div>
+      <select id="list-four" class="list" onchange="changeSound(3,this.value)"></select>
+    </div>
+    <!-- <div id="loops" class="bg">nothing yet</div> -->
+    <div id="text" class="textBox">
+      <div class="textBox-content">
+        <span class="close">x</span>
+        <p>time to make some beats! choose your sounds and get wavy by pressing the corresponding number keys. have fun!</p>
+      </div>
+    </div>
+  </div>
+<script src="web-audio-shared.js"></script>
+<script src="1234.js"></script>
+</body>
+</html>
