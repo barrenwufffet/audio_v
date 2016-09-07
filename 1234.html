@@ -9,37 +9,34 @@
 </head>
 <body>
   <div id="container">
-    <div id="button1" class="bg">
-      <button type="button" class="pad" id="one">1</button>
-      <div class="rate">
-        <p>Playback Rate</p>
-        <input type="range" min="50" value="100" max="150" onchange="setPlayBack(0,this.value)"/>
+    <div id="mpc">
+      <div id="button1" class="drumpad">
+        <button type="button" id="1">1</button>
       </div>
-      <select id="list-one" class="list" onchange="changeSound(0,this.value)"></select>
+      <div id="button2" class="drumpad">
+        <button type="button" id="2">2</button>
+      </div>
+      <div id="button3" class="drumpad">
+        <button type="button" id="3">3</button>
+      </div>
+      <div id="button4" class="drumpad">
+        <button type="button" id="4">4</button>
+      </div>
+      <div id="button5" class="drumpad">
+        <button type="button" id="5">q</button>
+      </div>
+      <div id="button6" class="drumpad">
+        <button type="button" id="6">w</button>
+      </div>
+      <div id="button7" class="drumpad">
+        <button type="button" id="7">e</button>
+      </div>
+      <div id="button8" class="drumpad">
+        <button type="button" id="8">r</button>
+      </div>
     </div>
-    <div id="button2" class="bg">
-      <button type="button" class="pad" id="two">2</button>
-      <div class="rate">
-        <p>Playback Rate</p>
-        <input type="range" min="50" value="100" max="150" onchange="setPlayBack(1,this.value)"/>
-      </div>
-      <select id="list-two" class="list" onchange="changeSound(1,this.value)"></select>
-    </div>
-    <div id="button3" class="bg">
-      <button type="button" class="pad" id="three">3</button>
-      <div class="rate">
-        <p>Playback Rate</p>
-        <input type="range" min="50" value="100" max="150" onchange="setPlayBack(2,this.value)"/>
-      </div>
-      <select id="list-three" class="list" onchange="changeSound(2,this.value)"></select>
-    </div>
-    <div id="button4" class="bg">
-      <button type="button" class="pad" id="four">4</button>
-      <div class="rate">
-        <p>Playback Rate</p>
-        <input type="range" min="50" value="100" max="150" onchange="setPlayBack(3,this.value)"/>
-      </div>
-      <select id="list-four" class="list" onchange="changeSound(3,this.value)"></select>
+    <div id="soundselect">
+      <ul id="sounds"></ul>
     </div>
     <!-- <div id="loops" class="bg">nothing yet</div> -->
     <div id="text" class="textBox">
