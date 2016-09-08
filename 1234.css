@@ -1,11 +1,11 @@
 body {
   /*background: url(images/bg.jpg);*/
-  background-color: white;
-  font-family: "Lucida Console";
+  background-color: rgb(25,20,30);
+  font-family: Helvetica;
 }
 
 *[draggable=true] {
-  -moz-user-select:none;
+  -moz-user-select: none;
   -khtml-user-drag: element;
   cursor: move;
 }
@@ -14,40 +14,41 @@ body {
   margin: 50px;
 }
 
-button {
+#mpc button {
   font-size: 60px;
   text-align: center;
   height: 150px;
   width: 150px;
-  background-color: rgba(100,100,100,0.7);
+  background-color: rgba(100,100,100,0.9);
   border: 5px solid rgba(0, 0, 0, 0.6);
   border-radius: 5px;
+  box-shadow: inset 0px 0px 25px 15px rgba(0,0,0,0.5);
 }
 
-/*button.over {
-  background-color: rgba(255,0,0,0.6);
-}*/
-
 #mpc {
+  background-color: gray;
   float: left;
-  border: 1px solid black;
-  height: 360px;
-  width: 720px;
+  border: 5px solid rgba(0, 0, 0, 0.3);
+  border-radius: 15px;
+  height: 200px;
+  width: 880px;
   padding: 10px;
-  margin-right: 20px;
+  margin-right: 38px;
+  margin-bottom: 10px;
+  box-shadow: inset 0px 0px 200px 50px rgba(50,30,40,0.5);
 }
 
 .drumpad {
   float: left;
   font-size: 60px;
   margin: 0 auto;
-  padding: 5px;
+  padding: 3px;
   height: 150px;
   width: 150px;
   border: 5px solid rgba(0, 0, 0, 0.3);
   border-radius: 10px;
   margin: 5px;
-  box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.2);
+  box-shadow: 0px 0px 7px 3px rgba(0,0,0,0.2);
   background: radial-gradient(black 15%, transparent 16%) 0 0,
     radial-gradient(black 15%, transparent 16%) 8px 8px,
     radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px,
@@ -56,35 +57,111 @@ button {
   background-size:16px 16px;
 }
 
-#soundselect {
-  margin: 0 0 0 800px;
-  border: 1px solid black;
-  height: 400px;
-  width: 360px;
+.padLabel {
+  font-size: 12px;
+  text-align: center;
+  color: white;
+  width: 150px;
+  margin: 15px 0px 0px -5px;
+  border: 5px solid rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  background: radial-gradient(black 15%, transparent 16%) 0 0,
+    radial-gradient(black 15%, transparent 16%) 8px 8px,
+    radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px,
+    radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;
+  background-color:#282828;
+  background-size:16px 16px;
+}
+
+#soundselector {
+  float: left;
+  height: 340px;
+  width: 910px;
+}
+
+#loops {
+  float: left;
+  width: 330px;
+  height: 300px;
+  border: 5px solid rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background-color: gray;
+  box-shadow: inset 0px 0px 200px 50px rgba(50,30,40,0.7);
+  margin-right: 10px;
+  padding: 10px 3px 10px 17px;
+}
+
+#loops_wrapper {
+  display: none;
+}
+
+.loop {
+  font-size: 18px;
+  text-align: center;
+  height: 140px;
+  width: 145px;
+  margin: 5px;
+  border: 2px solid black;
+  border-radius: 10px;
+  background-color: rgba(100,100,100,0.5);
+  box-shadow: inset 0px 0px 70px -20px rgba(255,255,255,0.7);
+}
+
+.loop:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+#soundbank {
+  float: left;
+  text-align: center;
+  background-color: gray;
+  border: 5px solid rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  height: 320px;
+  width: 530px;
+  box-shadow: inset 0px 0px 200px 50px rgba(50,30,40,0.7);
+  overflow: hidden;
+}
+
+#sounds_wrapper {
+  margin-left: -28px;
+  box-shadow: inset 0px -50px 70px -50px rgba(255,255,255,0.7);
+  width: 560px;
+  height: 300px;
   overflow: scroll;
 }
 
-#soundselect li {
-  border: 1px solid rgba(0,0,0,0.4); 
-  font-family: Helvetica;
-  height: 30px;
+#soundbank header {
+  padding: 5px;
+  font-size: 18px;
 }
 
-#soundselect li:hover {
+#soundbank li {
+  float: left;
+  background-color: rgba(100,100,100,0.5);
+  box-shadow: inset 0px 0px 50px -20px rgba(255,255,255,0.7);
+  border: 2px solid black;
+  border-radius: 5px;
+  font-size: 14px;
+  line-height: 8em;
+  width: 110px;
+  height: 110px;
+  margin: 0px 6px 12px 6px;
+}
+
+#soundbank li:hover {
   cursor: pointer;
-  color: rgba(255,33,111,0.5); 
-  font-family: Helvetica;
-  height: 30px;
+  background-color: rgba(255,130,130,0.5);
 }
 
-#soundselect ul {
+#sounds {
+  display: none;
   list-style: none;
   list-style-type: none;
-  padding: 5px;
 }
 
 /*.rate {
-  font-family: Helvetica;
   font-size: 12px;
   color: white;
   text-align: center;
@@ -106,12 +183,10 @@ button {
 }*/
 
 /* range slider CSS taken from: 
-http://brennaobrien.com/blog/2014/05/style-input-type-range-in-every-browser.html */
+http://brennaobrien.com/blog/2014/05/style-input-type-range-in-every-browser.html
 
 input[type=range] {
-  /*removes default webkit styles*/
   -webkit-appearance: none;
-  /*required for proper track sizing in FF*/
   width: 200px;
 }
 input[type=range]::-webkit-slider-runnable-track {
@@ -155,14 +230,11 @@ input[type=range]::-ms-track {
   width: 200px;
   height: 5px;
   
-  /*remove bg colour from the track, we'll use ms-fill-lower and ms-fill-upper instead */
   background: transparent;
   
-  /*leave room for the larger thumb to overflow with a transparent border */
   border-color: transparent;
   border-width: 6px 0;
 
-  /*remove default tick marks*/
   color: transparent;
 }
 input[type=range]::-ms-fill-lower {
@@ -186,30 +258,20 @@ input[type=range]:focus::-ms-fill-lower {
 input[type=range]:focus::-ms-fill-upper {
   background: #ccc;
 }
-
-/*
-#loops {
-  margin: 0 auto;
-  width: 800px;
-  height: 40px;
-  border: 5px solid rgba(0, 0, 0, 0.5);
-  border-radius: 5px;
-  overflow-x: scroll;
-} */
-
-/* textbox css taken from w3schools http://www.w3schools.com/howto/howto_css_modals.asp */
+*/
+/* textbox css taken from w3schools http://www.w3schools.com/howto/howto_css_modals.asp
 
 .textBox {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  display: none; 
+  position: fixed; 
+  z-index: 1; 
   left: 0;
   top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  width: 100%; 
+  height: 100%;
+  overflow: auto; 
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
 }
 
 .textBox-content {
@@ -238,3 +300,4 @@ input[type=range]:focus::-ms-fill-upper {
   text-decoration: none;
   cursor: pointer;
 }
+*/

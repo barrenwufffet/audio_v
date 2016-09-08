@@ -12,39 +12,49 @@
     <div id="mpc">
       <div id="button1" class="drumpad">
         <button type="button" id="1">1</button>
+        <div id="label1" class="padLabel">- drag and drop a sound -</div>
       </div>
       <div id="button2" class="drumpad">
         <button type="button" id="2">2</button>
+        <div id="label2" class="padLabel">- drag and drop a sound -</div>
       </div>
       <div id="button3" class="drumpad">
         <button type="button" id="3">3</button>
+        <div id="label3" class="padLabel">- drag and drop a sound -</div>
       </div>
       <div id="button4" class="drumpad">
         <button type="button" id="4">4</button>
+        <div id="label4" class="padLabel">- drag and drop a sound -</div>
       </div>
       <div id="button5" class="drumpad">
-        <button type="button" id="5">q</button>
-      </div>
-      <div id="button6" class="drumpad">
-        <button type="button" id="6">w</button>
-      </div>
-      <div id="button7" class="drumpad">
-        <button type="button" id="7">e</button>
-      </div>
-      <div id="button8" class="drumpad">
-        <button type="button" id="8">r</button>
+        <button type="button" id="5">5</button>
+        <div id="label5" class="padLabel">- drag and drop a sound -</div>
       </div>
     </div>
-    <div id="soundselect">
-      <ul id="sounds"></ul>
+    <div id="soundselector">
+      <div id="loops">
+        <p id="loading_loops">loading loops...</p>
+        <div id="loops_wrapper">
+          <button type="button" id="loop1" class="loop" onclick="toggleLoop(0)">loop 1</button>
+          <button type="button" id="loop2" class="loop" onclick="toggleLoop(1)">loop 2</button>
+          <button type="button" id="loop3" class="loop" onclick="toggleLoop(2)">loop 3</button>
+          <button type="button" id="loop4" class="loop" onclick="toggleLoop(3)">loop 4</button>
+        </div>
+      </div>
+      <div id="soundbank">
+        <header>Drag sounds onto the drum pads to load them!</header>
+        <div id="sounds_wrapper">
+          <p id="loading">loading sounds...</p>
+          <ul id="sounds"></ul>
+        </div>
+      </div>
     </div>
-    <!-- <div id="loops" class="bg">nothing yet</div> -->
-    <div id="text" class="textBox">
+    <!-- <div id="text" class="textBox">
       <div class="textBox-content">
         <span class="close">x</span>
         <p>time to make some beats! choose your sounds and get wavy by pressing the corresponding number keys. have fun!</p>
       </div>
-    </div>
+    </div> -->
   </div>
 <script src="web-audio-shared.js"></script>
 <script src="1234.js"></script>

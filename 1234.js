@@ -1,12 +1,13 @@
 var context;
 var bufferLoader;
 var myBufferList;
-var soundMap;
-var names = ["explore_kick_1","explore_kick_2","explore_kick_3","Air_funk","Caddy_ki","Doggiek","fatkick","Glitch_Hop_Kick05","(Kick) FSMH1","Ohiokic","explore_clap","explore_snap1","explore_snap2","explore_snare1","explore_snare2","explore_snare3","BALTIMOR","Newerks","s2","s3","sn1","[Snr] BEAUTIFUL MORNIN","tightsnare","clap","explore_chop","chop1","chop2","chop4","Misc_Stabs_62","Sound192","chimes","FX9","explore_fx","explore_perc","zap1","hih1","hih2","hh1","hh2","crash","crash1","crash2","airhorn","ironside","another-one","hah","haan","milli","montana","shout","scream1","[VOX] BBB4U Quickie","[VOX] Perfect"];
-var soundBank = ["sounds/explore_kick_1.mp3","sounds/explore_kick_2.mp3","sounds/explore_kick_3.mp3","sounds/Air_funk.mp3","sounds/Caddy_ki.mp3","sounds/Doggiek.mp3","sounds/fatkick.mp3","sounds/Glitch_Hop_Kick05.mp3","sounds/(Kick) FSMH1.mp3","sounds/Ohiokic.mp3","sounds/explore_clap.mp3","sounds/explore_snap1.mp3","sounds/explore_snap2.mp3","sounds/explore_snare1.mp3","sounds/explore_snare2.mp3","sounds/explore_snare3.mp3","sounds/BALTIMOR.mp3","sounds/Newerks.mp3","sounds/s2.mp3","sounds/s3.mp3","sounds/sn1.mp3","sounds/[Snr] BEAUTIFUL MORNIN.mp3","sounds/tightsnare.mp3","sounds/clap.mp3","sounds/explore_chop.mp3","sounds/chop1.mp3","sounds/chop2.mp3","sounds/chop4.mp3","sounds/Misc_Stabs_62.mp3","sounds/Sound192.mp3","sounds/chimes.mp3","sounds/FX9.mp3","sounds/explore_fx.mp3","sounds/explore_perc.mp3","sounds/zap1.mp3","sounds/hih1.mp3","sounds/hih2.mp3","sounds/hh1.mp3","sounds/hh2.mp3","sounds/crash.mp3","sounds/crash1.mp3","sounds/crash2.mp3","sounds/airhorn.mp3","sounds/ironside.mp3","sounds/another-one.mp3","sounds/hah.mp3","sounds/haan.mp3","sounds/milli.mp3","sounds/montana.mp3","sounds/shout.mp3","sounds/scream1.mp3","sounds/[VOX] BBB4U Quickie.mp3","sounds/[VOX] Perfect.mp3"];
-var buttonNames = ['one','two','three','four','q','w','e','r'];
-var buttonList = [1,2,3,4,5,6,7,8];
-var keyList = [49,50,51,52,81,87,69,82];
+var soundMap = {};
+var loops = {};
+var names = ["explore_kick_1","explore_kick_2","explore_kick_3","Air_funk","Caddy_ki","Doggiek","fatkick","Glitch Kick","kick_FSMH","Ohiokic","explore_clap","explore_snap1","explore_snap2","explore_snare1","explore_snare2","explore_snare3","BALTIMOR","Newerks","s2","s3","sn1","snr_FSMH","tightsnare","clap","explore_chop","chop1","chop2","chop4","stab62","Sound192","chimes","FX9","explore_fx","explore_perc","zap1","hih1","hih2","hh1","hh2","crash","crash1","crash2","airhorn","ironside","another-one","hah","haan","milli","montana","shout","scream1","[VOX] wooh","[VOX] Perfect"];
+var soundBank = ["sounds/explore_kick_1.mp3","sounds/explore_kick_2.mp3","sounds/explore_kick_3.mp3","sounds/Air_funk.mp3","sounds/Caddy_ki.mp3","sounds/Doggiek.mp3","sounds/fatkick.mp3","sounds/Glitch_Hop_Kick05.mp3","sounds/(Kick) FSMH1.mp3","sounds/Ohiokic.mp3","sounds/explore_clap.mp3","sounds/explore_snap1.mp3","sounds/explore_snap2.mp3","sounds/explore_snare1.mp3","sounds/explore_snare2.mp3","sounds/explore_snare3.mp3","sounds/BALTIMOR.mp3","sounds/Newerks.mp3","sounds/s2.mp3","sounds/s3.mp3","sounds/sn1.mp3","sounds/[Snr] BEAUTIFUL MORNIN.mp3","sounds/tightsnare.mp3","sounds/clap.mp3","sounds/explore_chop.mp3","sounds/chop1.mp3","sounds/chop2.mp3","sounds/chop4.mp3","sounds/Misc_Stabs_62.mp3","sounds/Sound192.mp3","sounds/chimes.mp3","sounds/FX9.mp3","sounds/explore_fx.mp3","sounds/explore_perc.mp3","sounds/zap1.mp3","sounds/hih1.mp3","sounds/hih2.mp3","sounds/hh1.mp3","sounds/hh2.mp3","sounds/crash.mp3","sounds/crash1.mp3","sounds/crash2.mp3","sounds/airhorn.mp3","sounds/ironside.mp3","sounds/another-one.mp3","sounds/hah.mp3","sounds/haan.mp3","sounds/milli.mp3","sounds/montana.mp3","sounds/shout.mp3","sounds/scream1.mp3","sounds/[VOX] BBB4U Quickie.mp3","sounds/[VOX] Perfect.mp3","sounds/loop_calabria.mp3","sounds/loop_hats.mp3","sounds/loop_hiphop.mp3","sounds/loop_sango.mp3"];
+var buttonNames = ['one','two','three','four','five'];
+var buttonList = [1,2,3,4,5];
+var keyList = [49,50,51,52,53];
 
 window.requestAnimFrame = (function(){
   return  window.requestAnimationFrame ||
@@ -23,7 +24,7 @@ window.onload = init;
 
 function init() {
 
-  setupTextBox();
+  //setupTextBox();
 
   context = new (window.AudioContext || window.webkitAudioContext)();
   bufferLoader = new BufferLoader(context,soundBank,finishedLoading);
@@ -41,10 +42,11 @@ function init() {
 
 function finishedLoading(bufferList) {
   myBufferList = bufferList;
-  soundMap = {};
   setupButtons();
   setupLists();
   setupDrag();
+  showSounds();
+  setupLoops();
 }
 
 function changeSound(number, soundName) {
@@ -56,8 +58,11 @@ function changeSound(number, soundName) {
   var idx = names.indexOf(soundName);
   soundMap[number].buffer = myBufferList[idx];
 
-  var button = document.getElementById(buttonList[number]);
-  button.style.backgroundColor = "rgba(255,150,30,0.6)";
+  var button = document.getElementById(""+buttonList[number]);
+  button.style.backgroundColor = "rgba(0,230,255,0.85)";
+
+  var label = document.getElementById("label"+buttonList[number]);
+  label.innerHTML = soundName;
 }
 
 function onKeyUp(key) {
@@ -65,7 +70,7 @@ function onKeyUp(key) {
   if(soundMap[number].buffer != undefined) {
     soundMap[number].can_trigger = true;
     var button = document.getElementById(""+buttonList[number]);
-    button.style.backgroundColor = "rgba(255,150,30,0.6)";
+    button.style.backgroundColor = "rgba(0,230,255,0.85)";
     button.style.color = "black";
     //button.style.backgroundColor = "rgba("+bg[0]+","+bg[1]+","+bg[2]+",0.6)";
   }
@@ -77,9 +82,27 @@ function onKeyDown(key) {
     if(soundMap[number].can_trigger) {
       var button = document.getElementById(""+buttonList[number]);
       play(number,0);
-      button.style.backgroundColor = "rgba(220,100,30,0.3)";
-      button.style.color = "rgba(255,150,30,0.6)"; //visual 'press' effect
+      button.style.backgroundColor = "rgba(0,170,200,0.7)";
+      button.style.color = "rgba(0,230,255,0.6)"; //visual 'press' effect
     }
+  }
+}
+
+function toggleLoop(number) {
+  var curr_loop = document.getElementById('loop'+(number+1));
+  if(loops[number].playing) { //if sound is already playing 
+    loops[number].playing = false;
+    loops[number].sound.disconnect(context.destination); //stop it
+    curr_loop.style.backgroundColor = "rgba(100,100,100,0.5)";
+  }
+  else {
+    loops[number].playing = true;
+    loops[number].sound = context.createBufferSource();
+    loops[number].sound.loop = true;
+    loops[number].sound.buffer = loops[number].buffer;
+    loops[number].sound.connect(context.destination);
+    loops[number].sound.start(0);
+    curr_loop.style.backgroundColor = "rgba(100,255,100,0.7)";
   }
 }
 
@@ -108,7 +131,6 @@ function stopSound(number) {
 
 function isValidKey(key) {
   var idx = keyList.indexOf(key);
-  console.log(idx >= 0);
   return idx >= 0;
 }
 
@@ -120,15 +142,26 @@ function Sound(sound,buffer,rate,playing,can_trigger) {
   this.can_trigger = can_trigger;
 }
 
+function setupLoops() {
+  for(var i = 0; i < 4; i++) {
+    loops[i] = new Sound(null,myBufferList[myBufferList.length-1-i],1.0,false,true);
+  }
+  var loops_div = document.getElementById('loops');
+  var display_loops = document.getElementById('loops_wrapper');
+  var loading = document.getElementById('loading_loops');
+  loops_div.removeChild(loading);
+  display_loops.style.display = "block";
+}
+
 function setupButtons() {
-  for(var i = 0; i < 8; i++) {
+  for(var i = 0; i < 5; i++) {
     soundMap[i] = new Sound(null,null,1.0,false,true);
   }
 }
 
 function setupLists() {
   var list = document.getElementById('sounds');
-  for(var j = 0; j < soundBank.length; j++) {
+  for(var j = 0; j < names.length; j++) {
     var soundLabel = document.createElement("li");
     soundLabel.innerHTML = names[j];
     soundLabel.id = names[j];
@@ -140,16 +173,24 @@ function setupLists() {
   }
 }
 
-function setupTextBox() {
-  var textBox = document.getElementById('text');
-  textBox.style.display = "block";
-  var span = document.getElementsByClassName("close")[0];
-
-  // When the user clicks on <span> (x), close the modal
-  span.onclick = function() {
-    textBox.style.display = "none";
-  }
+function showSounds() {
+  var wrapper = document.getElementById('sounds_wrapper');
+  var sounds = document.getElementById('sounds');
+  var loading = document.getElementById('loading');
+  wrapper.removeChild(loading);
+  sounds.style.display = "block";
 }
+
+// function setupTextBox() {
+//   var textBox = document.getElementById('text');
+//   textBox.style.display = "block";
+//   var span = document.getElementsByClassName("close")[0];
+
+//   // When the user clicks on <span> (x), close the modal
+//   span.onclick = function() {
+//     textBox.style.display = "none";
+//   }
+// }
 
 function setupDrag() {
   var pads = document.querySelectorAll('#mpc button');
@@ -168,8 +209,7 @@ function handleDragStart(e) {
 
 function handleDragOver(e) {
   e.preventDefault(); // allows us to drop
-  //this.className = 'over';
-  this.style.backgroundColor = "rgba(255,255,0,0.7)";
+  this.style.backgroundColor = "rgba(255,130,130,0.75)";
   e.dataTransfer.dropEffect = 'copy';
   return false;
 }
@@ -183,30 +223,29 @@ function handleDragEnter() {
 function handleDragLeave() {
   //this.className = 'btn';
   if(soundMap[this.id-1].buffer != undefined) {
-    this.style.backgroundColor = "rgba(255,150,30,0.6)";
+    this.style.backgroundColor = "rgba(0,230,255,0.85)";
   }
   else {
-    this.style.backgroundColor = "rgba(100,100,100,0.7)";
+    this.style.backgroundColor = "rgba(100,100,100,0.9)";
   }
 }
 
 function handleDrop(e) {
-  this.style.backgroundColor = "rgba(255,150,30,0.6)";
+  this.style.backgroundColor = "rgba(0,230,255,0.85)";
   e.preventDefault();
   e.dataTransfer.dropEffect = 'copy';
   if (!e.stopPropagation) e.stopPropagation(); // stops the browser from redirecting...why???
   var el = document.getElementById(e.dataTransfer.getData('Text'));
   changeSound(this.id-1, el.id);
-  console.log("button " + this.id + " should get sound -> " + el.id);
 }
+
+
 /*
 
 ideas:
 
-get rid of dropdowns -> drag and drop instead?
 maschine-style sound editor window (AnalyserNode to display waveforms?)
 add volume sliders
-loops
 effects rack?
 re-design to make it look nicer
 better button presses
