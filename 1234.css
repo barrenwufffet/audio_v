@@ -1,7 +1,13 @@
 body {
   /*background: url(images/bg.jpg);*/
   background-color: rgb(25,20,30);
-  font-family: Helvetica;
+  font-family: 'Abel',Helvetica;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  cursor: default;
 }
 
 *[draggable=true] {
@@ -11,43 +17,45 @@ body {
 }
 
 #container {
-  margin: 50px;
+  width: 100%;
+  height: 100%;
+  margin-right: auto;
+  margin-left: auto;
 }
 
-#mpc button {
-  font-size: 60px;
+#main {
+  width: 100%;
+}
+
+#header {
+  margin: 0 auto;
+  width: 80%;
+  height: 100px;
+  line-height: 1em;
   text-align: center;
-  height: 150px;
-  width: 150px;
-  background-color: rgba(100,100,100,0.9);
-  border: 5px solid rgba(0, 0, 0, 0.6);
-  border-radius: 5px;
-  box-shadow: inset 0px 0px 25px 15px rgba(0,0,0,0.5);
+  color: white;
+  font-size: 80px;
 }
 
 #mpc {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 80%;
+  height: 180px;
   background-color: gray;
-  float: left;
   border: 5px solid rgba(0, 0, 0, 0.3);
   border-radius: 15px;
-  height: 200px;
-  width: 880px;
-  padding: 10px;
-  margin-right: 38px;
-  margin-bottom: 10px;
+  padding: 5px;
   box-shadow: inset 0px 0px 200px 50px rgba(50,30,40,0.5);
 }
 
 .drumpad {
-  float: left;
-  font-size: 60px;
-  margin: 0 auto;
-  padding: 3px;
-  height: 150px;
-  width: 150px;
+  width: 18%;
+  height: 170px;
   border: 5px solid rgba(0, 0, 0, 0.3);
   border-radius: 10px;
-  margin: 5px;
   box-shadow: 0px 0px 7px 3px rgba(0,0,0,0.2);
   background: radial-gradient(black 15%, transparent 16%) 0 0,
     radial-gradient(black 15%, transparent 16%) 8px 8px,
@@ -57,79 +65,100 @@ body {
   background-size:16px 16px;
 }
 
+.drumpad button {
+  font-size: 3em;
+  text-align: center;
+  height: 88%;
+  width: 100%;
+  background-color: rgba(100,100,100,0.9);
+  border: 5px solid rgba(0, 0, 0, 0.6);
+  border-radius: 5px;
+  box-shadow: inset 0px 0px 25px 15px rgba(0,0,0,0.5);
+}
+
 .padLabel {
-  font-size: 12px;
+  height: 12%;
   text-align: center;
   color: white;
-  width: 150px;
-  margin: 15px 0px 0px -5px;
-  border: 5px solid rgba(0, 0, 0, 0.3);
-  border-radius: 5px;
-  background: radial-gradient(black 15%, transparent 16%) 0 0,
-    radial-gradient(black 15%, transparent 16%) 8px 8px,
-    radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px,
-    radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;
-  background-color:#282828;
-  background-size:16px 16px;
+  box-shadow: inset 0px 0px 60px -15px black;
+}
+
+.padLabel span {
+  font-size: 1.3vw;
+  line-height: 1.5em;
+}
+
+#sound_console {
+  width: 100%;
 }
 
 #soundselector {
-  float: left;
-  height: 340px;
-  width: 910px;
+  margin: 0 auto;
+  width: 81%;
+  height: 320px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 5px;
 }
 
 #loops {
-  float: left;
-  width: 330px;
-  height: 300px;
-  border: 5px solid rgba(0, 0, 0, 0.3);
-  border-radius: 10px;
+  display: flex;
+  flex-basis: 38%;
   background-color: gray;
   box-shadow: inset 0px 0px 200px 50px rgba(50,30,40,0.7);
+  border: 5px solid rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
   margin-right: 10px;
-  padding: 10px 3px 10px 17px;
+}
+
+#loading_loops {
+  text-align: center;
+  width: 100%;
 }
 
 #loops_wrapper {
+  float: left;
   display: none;
+  padding: 5px;
+  flex-direction: row;
+  flex-flow: wrap;
 }
 
-.loop {
-  font-size: 18px;
-  text-align: center;
-  height: 140px;
-  width: 145px;
-  margin: 5px;
+#loops button {
+  font-family: 'Abel';
+  flex-grow: 1;
+  width: 48%;
+  margin: 1%;
+  font-size: 3vw;
   border: 2px solid black;
   border-radius: 10px;
   background-color: rgba(100,100,100,0.5);
   box-shadow: inset 0px 0px 70px -20px rgba(255,255,255,0.7);
 }
 
-.loop:hover {
+#loops button:hover {
   cursor: pointer;
   opacity: 0.7;
 }
 
 #soundbank {
-  float: left;
+  flex-basis: 62%;
   text-align: center;
-  background-color: gray;
   border: 5px solid rgba(0, 0, 0, 0.3);
   border-radius: 10px;
-  height: 320px;
-  width: 530px;
+  background-color: gray;
   box-shadow: inset 0px 0px 200px 50px rgba(50,30,40,0.7);
-  overflow: hidden;
+  overflow: scroll;
 }
 
 #sounds_wrapper {
-  margin-left: -28px;
-  box-shadow: inset 0px -50px 70px -50px rgba(255,255,255,0.7);
-  width: 560px;
-  height: 300px;
-  overflow: scroll;
+  display: flex;
+}
+
+#loading_sounds {
+  text-align: center;
+  flex-grow: 1;
 }
 
 #soundbank header {
@@ -137,29 +166,54 @@ body {
   font-size: 18px;
 }
 
-#soundbank li {
-  float: left;
+#sounds_wrapper li {
+  flex-basis: 18%;
+  flex-grow: 1;
   background-color: rgba(100,100,100,0.5);
   box-shadow: inset 0px 0px 50px -20px rgba(255,255,255,0.7);
-  border: 2px solid black;
+  border: 1px solid black;
   border-radius: 5px;
-  font-size: 14px;
+  font-size: 1.2vw;
   line-height: 8em;
-  width: 110px;
-  height: 110px;
-  margin: 0px 6px 12px 6px;
+  margin: 1px;
 }
 
-#soundbank li:hover {
+#sounds_wrapper li:hover {
   cursor: pointer;
   background-color: rgba(255,130,130,0.5);
 }
 
 #sounds {
   display: none;
+  flex-basis: 100%;
+  flex-direction: row;
+  flex-flow: wrap;
+  justify-content: flex-start;
+  padding: 0;
   list-style: none;
   list-style-type: none;
 }
+
+/*#master {
+  position: absolute;
+  margin-left: 920px;
+  border: 1px solid white;
+  height: 570px;
+  width: 235px;
+}
+
+#presets {
+  float: left;
+  color: white;
+  text-align: center;
+  height: 220px;
+  background-color: gray;
+  border: 5px solid rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  width: 225px;
+  box-shadow: inset 0px 0px 200px 50px rgba(50,30,40,0.7);
+  overflow: hidden;
+}*/
 
 /*.rate {
   font-size: 12px;
@@ -257,47 +311,4 @@ input[type=range]:focus::-ms-fill-lower {
 }
 input[type=range]:focus::-ms-fill-upper {
   background: #ccc;
-}
-*/
-/* textbox css taken from w3schools http://www.w3schools.com/howto/howto_css_modals.asp
-
-.textBox {
-  display: none; 
-  position: fixed; 
-  z-index: 1; 
-  left: 0;
-  top: 0;
-  width: 100%; 
-  height: 100%;
-  overflow: auto; 
-  background-color: rgb(0,0,0);
-  background-color: rgba(0,0,0,0.4);
-}
-
-.textBox-content {
-  font-family: Helvetica;
-  font-size: 35px;
-  text-align: justify;
-  background-color: #fefefe;
-  margin: 15% auto;
-  padding: 20px;
-  border: 1px solid #888;
-  border-radius: 10px;
-  width: 64%;
-  height: 30%;
-}
-
-.close {
-  color: rgba(0,0,0,0.5);
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
-*/
+}*/
