@@ -27,6 +27,12 @@ body {
   width: 100%;
 }
 
+.mobile {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+
 #header {
   margin: 0 auto;
   width: 80%;
@@ -44,11 +50,10 @@ body {
   justify-content: space-around;
   width: 80%;
   height: 180px;
-  background-color: gray;
-  border: 5px solid rgba(0, 0, 0, 0.3);
+  background-color: rgb(80,60,70);
+  border: 5px solid rgb(60,40,50);
   border-radius: 15px;
   padding: 5px;
-  box-shadow: inset 0px 0px 200px 50px rgba(50,30,40,0.5);
 }
 
 .drumpad {
@@ -70,10 +75,23 @@ body {
   text-align: center;
   height: 88%;
   width: 100%;
-  background-color: rgba(100,100,100,0.9);
-  border: 5px solid rgba(0, 0, 0, 0.6);
-  border-radius: 5px;
-  box-shadow: inset 0px 0px 25px 15px rgba(0,0,0,0.5);
+  background-color: rgb(95,70,100);
+  border: 3px solid black;
+  border-radius: 3px;
+}
+
+#mpc .activePad {
+  background-color: rgb(80,160,180);
+  border: 3px solid white;
+}
+
+#mpc .loadedPad {
+  background-color: rgb(80,160,180);
+}
+
+#mpc .dragoverPad {
+  background-color: rgba(80,160,180,0.7);
+  border: 3px solid white;
 }
 
 .padLabel {
@@ -105,9 +123,8 @@ body {
 #loops {
   display: flex;
   flex-basis: 38%;
-  background-color: gray;
-  box-shadow: inset 0px 0px 200px 50px rgba(50,30,40,0.7);
-  border: 5px solid rgba(0, 0, 0, 0.3);
+  background-color: rgb(80,60,70);
+  border: 5px solid rgb(60,40,50);
   border-radius: 10px;
   margin-right: 10px;
 }
@@ -133,22 +150,25 @@ body {
   font-size: 3vw;
   border: 2px solid black;
   border-radius: 10px;
-  background-color: rgba(100,100,100,0.5);
-  box-shadow: inset 0px 0px 70px -20px rgba(255,255,255,0.7);
+  background-color: rgb(100,90,95);
 }
 
 #loops button:hover {
   cursor: pointer;
-  opacity: 0.7;
+  /*opacity: 0.7;*/
+  border: 2px solid white;
+}
+
+#loops .activeLoop {
+  background-color: rgb(70,200,60);
 }
 
 #soundbank {
   flex-basis: 62%;
   text-align: center;
-  border: 5px solid rgba(0, 0, 0, 0.3);
+  border: 5px solid rgb(60,40,50);
   border-radius: 10px;
-  background-color: gray;
-  box-shadow: inset 0px 0px 200px 50px rgba(50,30,40,0.7);
+  background-color: rgb(80,60,70);
   overflow: scroll;
 }
 
@@ -169,8 +189,7 @@ body {
 #sounds_wrapper li {
   flex-basis: 18%;
   flex-grow: 1;
-  background-color: rgba(100,100,100,0.5);
-  box-shadow: inset 0px 0px 50px -20px rgba(255,255,255,0.7);
+  background-color: rgb(100,90,95);
   border: 1px solid black;
   border-radius: 5px;
   font-size: 1.2vw;
@@ -180,7 +199,7 @@ body {
 
 #sounds_wrapper li:hover {
   cursor: pointer;
-  background-color: rgba(255,130,130,0.5);
+  border: 1px solid white;
 }
 
 #sounds {
@@ -192,6 +211,18 @@ body {
   padding: 0;
   list-style: none;
   list-style-type: none;
+}
+
+@media (max-width: 560px) {
+  #main {display: none;}
+  .mobile {
+    color: rgba(255,255,255,0.9);
+    margin: 0 auto;
+    width: 100%;
+    line-height: 1em;
+    text-align: center;
+    font-size: 10vw;
+  }
 }
 
 /*#master {

@@ -54,8 +54,9 @@ function changeSound(number, soundName) {
   var idx = names.indexOf(soundName);
   soundMap[number].buffer = myBufferList[idx];
 
-  var button = document.getElementById(""+buttonList[number]);
-  button.style.backgroundColor = "rgba(0,230,255,0.85)";
+  // var button = document.getElementById(""+buttonList[number]);
+  // button.style.backgroundColor = "rgba(0,230,255,0.85)";
+  // button.className = 'loaded';
 
   var labels = document.querySelectorAll('.padLabel > span');
   labels[number].innerHTML = soundName;
@@ -66,8 +67,9 @@ function onKeyUp(key) {
   if(soundMap[number].buffer != undefined) {
     soundMap[number].can_trigger = true;
     var button = document.getElementById(""+buttonList[number]);
-    button.style.backgroundColor = "rgba(0,230,255,0.85)";
-    button.style.color = "black";
+    // button.style.backgroundColor = "rgba(0,230,255,0.85)";
+    // button.style.color = "black";
+    button.className = 'loadedPad';
   }
 }
 
@@ -77,8 +79,9 @@ function onKeyDown(key) {
     if(soundMap[number].can_trigger) {
       var button = document.getElementById(""+buttonList[number]);
       play(number);
-      button.style.backgroundColor = "rgba(0,170,200,0.7)";
-      button.style.color = "rgba(0,230,255,0.6)"; //visual 'press' effect
+      // button.style.backgroundColor = "rgba(0,170,200,0.7)";
+      // button.style.color = "rgba(0,230,255,0.6)"; //visual 'press' effect
+      button.className = 'activePad';
     }
   }
 }
@@ -87,11 +90,11 @@ function toggleLoop(number) {
   var curr_loop = document.getElementById('loop'+(number+1));
   if(loops[number].playing) { //if loop is playing 
     loops[number].stop(); //stop it
-    curr_loop.style.backgroundColor = "rgba(100,100,100,0.5)";
+    curr_loop.className = "";
   }
   else {
     loops[number].play(true);
-    curr_loop.style.backgroundColor = "rgba(100,255,100,0.7)";
+    curr_loop.className = "activeLoop";
   }
 }
 
@@ -187,7 +190,7 @@ function handleDragStart(e) {
 
 function handleDragOver(e) {
   e.preventDefault(); // allows us to drop
-  this.style.backgroundColor = "rgba(255,130,130,0.75)";
+  this.className = 'dragoverPad';
   e.dataTransfer.dropEffect = 'copy';
   return false;
 }
@@ -199,11 +202,12 @@ function handleDragEnter() {
 
 function handleDragLeave() {
   var undef = soundMap[this.id-1].buffer != undefined;
-  this.style.backgroundColor = undef ? "rgba(0,230,255,0.85)" : "rgba(100,100,100,0.9)";
+  this.className = undef ? 'loadedPad' : '';
 }
 
 function handleDrop(e) {
-  this.style.backgroundColor = "rgba(0,230,255,0.85)";
+  // this.style.backgroundColor = "rgba(0,230,255,0.85)";
+  this.className = 'loadedPad';
   e.preventDefault();
   e.dataTransfer.dropEffect = 'copy';
   if (!e.stopPropagation) e.stopPropagation(); // stops the browser from redirecting...why???

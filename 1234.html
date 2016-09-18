@@ -12,49 +12,50 @@
 </head>
 <body>
   <div id="container">
+    <div class="mobile">sorry, but audio_v does not yet support this screen size!</div>
     <div id="main">
-      <section id="header">audio_v</section>
-      <section id="mpc">
-        <div id="button1" class="drumpad">
-          <button type="button" title="press '1' key to play my sound" id="1">1</button>
+      <div id="header">audio_v</div>
+      <div id="mpc">
+        <div class="drumpad">
+          <button type="button" class="" title="press '1' key to play my sound" id="1">1</button>
           <div id="label1" class="padLabel"><span>drag and drop a sound</span></div>
         </div>
-        <div id="button2" class="drumpad">
+        <div class="drumpad">
           <button type="button" title="press '2' key to play my sound" id="2">2</button>
           <div id="label2" class="padLabel"><span>drag and drop a sound</span></div>
         </div>
-        <div id="button3" class="drumpad">
+        <div class="drumpad">
           <button type="button" title="press '3' key to play my sound" id="3">3</button>
           <div id="label3" class="padLabel"><span>drag and drop a sound</span></div>
         </div>
-        <div id="button4" class="drumpad">
+        <div class="drumpad">
           <button type="button" title="press '4' key to play my sound" id="4">4</button>
           <div id="label4" class="padLabel"><span>drag and drop a sound</span></div>
         </div>
-        <div id="button5" class="drumpad">
+        <div class="drumpad">
           <button type="button" title="press '5' key to play my sound" id="5">5</button>
           <div id="label5" class="padLabel"><span>drag and drop a sound</span></div>
         </div>
       </div>
-    </section>
-    <section id="soundselector">
-      <div id="loops">
-        <p id="loading_loops">loading loops...</p>
-        <div id="loops_wrapper">
-          <button type="button" id="loop1" title="Click on loop to play it!" onclick="toggleLoop(0)">loop 1</button>
-          <button type="button" id="loop2" title="Click on loop to play it!" onclick="toggleLoop(1)">loop 2</button>
-          <button type="button" id="loop3" title="Click on loop to play it!" onclick="toggleLoop(2)">loop 3</button>
-          <button type="button" id="loop4" title="Click on loop to play it!" onclick="toggleLoop(3)">loop 4</button>
+      <div id="soundselector">
+        <div id="loops">
+          <p id="loading_loops">loading loops...</p>
+          <div id="loops_wrapper">
+            <button type="button" id="loop1" title="Click on loop to play it!" onclick="toggleLoop(0)">loop 1</button>
+            <button type="button" id="loop2" title="Click on loop to play it!" onclick="toggleLoop(1)">loop 2</button>
+            <button type="button" id="loop3" title="Click on loop to play it!" onclick="toggleLoop(2)">loop 3</button>
+            <button type="button" id="loop4" title="Click on loop to play it!" onclick="toggleLoop(3)">loop 4</button>
+          </div>
+        </div>
+        <div id="soundbank">
+          <header>Drag sounds onto the drum pads to load them!</header>
+          <div id="sounds_wrapper">
+            <p id="loading_sounds">loading sounds...</p>
+            <ul id="sounds"></ul>
+          </div>
         </div>
       </div>
-      <div id="soundbank">
-        <header>Drag sounds onto the drum pads to load them!</header>
-        <div id="sounds_wrapper">
-          <p id="loading_sounds">loading sounds...</p>
-          <ul id="sounds"></ul>
-        </div>
-      </div>
-    </section>
+    </div>
   </div>
 <script src="web-audio-shared.js"></script>
 <script src="1234.js"></script>
