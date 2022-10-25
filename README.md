@@ -6,4 +6,5 @@ a place to play sounds!
 This is a site made to mess around and make some music when your bored. Proceed with caution it is addicting.
 
 Current Link:
-delicate-water-9834.on.fleek.co 
+
+https://delicate-water-9834.on.fleek.co/
